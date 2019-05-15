@@ -1,0 +1,18 @@
+<div class="container p-5 m-5 bg-white" >
+  <h1><%= @restaurant.name %></h1>
+  <p> A <%= @restaurant.category %> restaurant in <%= @restaurant.address %></p>
+  <h5>Contact:</h5>
+  <p>Tel.: <%= @restaurant.phone_number %></p>
+  <br>
+  <h5 style="border-bottom: 0.2px solid rgb(140, 140, 140); padding: 6px;">Reviews</h5>
+  <ul style="list-style: none;">
+    <% @restaurant.reviews.each do |review| %>
+    <li style="font-style: italic;"><%= review.content %>
+      <br> <p style="font-size: 12px;">Rating: <%= review.rating %> stars</p>
+    </li>
+    <% end %>
+  </ul>
+  <p style="font-weight: bold; font-size: 14px;"> Average Rating: <%= @restaurant.average_rating %></p>
+  <%= link_to "Add a review", new_restaurant_review_path(@restaurant) %> |
+  <%= link_to "Go back", restaurants_path %>
+</div>
